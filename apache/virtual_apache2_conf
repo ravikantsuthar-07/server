@@ -1,0 +1,15 @@
+sudo apt update
+sudo apt install apache2 -y
+sudo mkdir -p /var/www/binjalfarm.com/
+sudo mkdir -p /var/www/techbikana.com/
+sudo touch /etc/apache2/sites-available/binjalfarm.com.conf
+sudo touch /etc/apache2/sites-available/techbikana.com.conf
+
+cd /etc/apache2/sites-available/
+
+sudo a2ensite binjalfarm.com.conf
+sudo service reload apache2
+sudo a2ensite techbikana.com.conf
+sudo service reload apache2
+
+sudo service apache2 restart

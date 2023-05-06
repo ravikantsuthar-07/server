@@ -1,0 +1,7 @@
+sudo dnf install vsftpd -y
+cd /etc/vsftpd/
+sudo cp vsftpd.conf vsftpd.conf.bkp
+sudo vim vsftpd.conf
+sudo systemctl start vsftpd
+sudo systemctl enable vsftpd
+sudo systemctl stop firewalld

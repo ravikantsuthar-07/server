@@ -1,0 +1,38 @@
+sudo -i
+
+dnf install openssh-server
+
+mkdir -p /var/sftp/data
+
+groupadd sftpusers
+
+useradd -d /var/sftp/data/sftp-user1 -s /sbin/nologin -g sftpusers sftp-user1
+
+cd /var/sftp
+
+chown -R root:root data
+
+chmod 700 data
+
+cd data
+
+chown -R root:sftpusers sftp-user1
+
+chmod 750 sftp-user1
+
+cd sftp-user1
+
+mkdir upload
+
+chown -R sftp-user1:sftpusers upload
+
+chmod 700 upload
+
+cd /etc/ssh
+
+vim sshd_config
+
+systemctl restart sshd
+
+
+
